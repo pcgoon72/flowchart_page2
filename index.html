@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flowchart 2 - Four Swimlanes</title>
+  <title>Study Plan Set Up</title>
   <style>
     body {
       background-color: #121212;
@@ -61,7 +61,7 @@
 </head>
 <body>
 
-<h2>Flowchart 2 - Four Swimlanes</h2>
+<h2>Study Plan Set Up</h2>
 <svg width="1500" height="800"></svg>
 
 <div id="infoModal" class="modal">
@@ -113,13 +113,20 @@
 
   // Nodes data
   const nodes = [
-    { id: "Create Study Plan", x: 100, y: 80, details: "Details for Create Study Plan." },
-    { id: "Step 2", x: 100, y: 80 + laneHeight, details: "Details for Step 2." },
-    { id: "Step 3", x: 250, y: 80 + laneHeight, details: "Details for Step 3." },
-    { id: "Step 4", x: 400, y: 80 + laneHeight, details: "Details for Step 4." },
-    { id: "Step 5", x: 550, y: 80 + laneHeight, details: "Details for Step 5." },
-    { id: "Step 6", x: 550, y: 80 + laneHeight * 2, details: "Details for Step 6." },
-    { id: "Step 7", x: 550, y: 80 + laneHeight * 3, details: "Details for Step 7." }
+    { id: "Create Study Plan", x: 100, y: 80,
+      details:`
+      <hr>
+      <p><strong>A: </strong>Consult with the GPM to create an integrated Project Plan</p>
+      <p><strong>B: </strong>Enter study information into MDMS and provide the GSL with the Study Plan.</p>
+      <hr>
+    `
+    },
+    { id: "Initiate Study Plan Setup", x: 100, y: 80 + laneHeight, details: "Details for Step 2." },
+    { id: "Initiate Overall Risk Assessment and Determine Risk Based Quality", x: 250, y: 80 + laneHeight, details: "Details for Step 3." },
+    { id: "Setup Study Budget Forecast", x: 400, y: 80 + laneHeight, details: "Details for Step 4." },
+    { id: "Prepare Data Capture Requirements", x: 550, y: 80 + laneHeight, details: "Details for Step 5." },
+    { id: "Ensure Study Team Members are Identified (Key and Ad Hoc)", x: 550, y: 80 + laneHeight * 2, details: "Details for Step 6." },
+    { id: "Review Relevant Docuemtns, Systems, Sites and Trainings.", x: 550, y: 80 + laneHeight * 3, details: "Details for Step 7." }
   ];
 
   // Links between nodes
