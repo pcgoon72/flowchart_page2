@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Study Plan Set Up</title>
+  <title>Study Plan Set Up - Second Flow (With Tooltip)</title>
   <style>
     body {
       background-color: #121212;
@@ -37,6 +37,21 @@
       fill: #fff;
       font-size: 14px;
       pointer-events: none;
+    }
+
+    /* Tooltip styles */
+    .tooltip {
+      position: absolute;
+      padding: 6px 12px;
+      background: #333;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 4px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+      z-index: 100;
     }
 
     .modal {
@@ -81,6 +96,9 @@
       <p id="modal-text">Info about this step...</p>
     </div>
   </div>
+
+  <!-- Custom Tooltip -->
+  <div class="tooltip" id="tooltip"></div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script>
@@ -174,6 +192,8 @@
         .attr("marker-end", "url(#arrow)");
     });
 
+    const tooltip = d3.select("#tooltip");
+
     const nodeGroup = container.selectAll(".node")
       .data(nodes)
       .enter()
@@ -184,11 +204,19 @@
         document.getElementById("modal-title").innerText = d.id;
         document.getElementById("modal-text").innerHTML = d.details || "No additional info.";
         document.getElementById("infoModal").style.display = "block";
+      })
+      .on("mouseenter", (event, d) => {
+        tooltip.style("opacity", 1)
+          .text(d.id);
+      })
+      .on("mousemove", (event) => {
+        tooltip
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px");
+      })
+      .on("mouseleave", () => {
+        tooltip.style("opacity", 0);
       });
-
-    /*** TOOLTIP (title) added here! ***/
-    nodeGroup.append("title")
-      .text(d => d.id);
 
     nodeGroup.append("rect")
       .attr("width", 100)
