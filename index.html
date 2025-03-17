@@ -194,9 +194,9 @@
         document.getElementById("infoModal").style.display = "block";
       });
 
-    /*** Add tooltips ***/
+    /*** Add tooltips showing node titles (ids) ***/
     nodeGroup.append("title")
-      .text(d => d.details ? d.details.replace(/<[^>]*>/g, '').trim() : "No additional info.");
+      .text(d => d.id);
 
     /*** Draw node rectangles ***/
     nodeGroup.append("rect")
