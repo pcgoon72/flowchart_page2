@@ -127,10 +127,8 @@
       {
         id: "Create Study Plan", x: 100, y: 80,
         details: `
-          <hr>
-          <p><strong>A: </strong>Consult with the GPM to create an integrated Project Plan</p>
-          <p><strong>B: </strong>Enter study information into MDMS and provide the GSL with the Study Plan.</p>
-          <hr>
+          A: Consult with the GPM to create an integrated Project Plan.
+          B: Enter study information into MDMS and provide the GSL with the Study Plan.
         `
       },
       { id: "Initiate Study Plan Setup", x: 100, y: 80 + laneHeight, details: "Details for Step 2." },
@@ -195,6 +193,10 @@
         document.getElementById("modal-text").innerHTML = d.details || "No additional info.";
         document.getElementById("infoModal").style.display = "block";
       });
+
+    /*** Add tooltips ***/
+    nodeGroup.append("title")
+      .text(d => d.details ? d.details.replace(/<[^>]*>/g, '').trim() : "No additional info.");
 
     /*** Draw node rectangles ***/
     nodeGroup.append("rect")
