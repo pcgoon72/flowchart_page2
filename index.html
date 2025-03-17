@@ -189,7 +189,7 @@
     .attr("transform", d => `translate(${d.x},${d.y})`)
     .on("click", (event, d) => {
       document.getElementById("modal-title").innerText = d.id;
-      document.getElementById("modal-text").innerText = d.details || "No additional info.";
+      document.getElementById("modal-text").innerHTML = d.details || "No additional info.";
       document.getElementById("infoModal").style.display = "block";
     });
 
